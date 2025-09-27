@@ -11,6 +11,7 @@ combo_flavours = [
 combo_toppings = [
     [1, 2],  # Chocolate Delight -> Chocolate Chips, Chocolate Syrup (index 1 and 2 of list_toppings)
     [0, 2],  # Oreo Fudge -> Oreos, Chocolate Syrup (index 0, 2)
+    []
 ]
 
 flavour_prices = [

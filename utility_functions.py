@@ -70,11 +70,21 @@ def get_topping_name(topping_index):
     return list_toppings[topping_index]
 
 
-def display_icecream_info(selected_item):
+def display_flavours_list():
+    for i in range(len(list_flavours)):
+        print(str(i + 1) + ". " + list_flavours[i])
+        
+
+def display_toppings_list():
+    for i in range(len(list_toppings)):
+        print(str(i + 1) + ". " + list_toppings[i])
+
+
+def display_icecream_info(selected_item, shopping_cart_index=-1):
     if selected_item == -1:
         selected_icecream_name = "Custom Ice Cream"
-        selected_icecream_flavours = chosen_flavours[selected_item]
-        selected_icecream_toppings = chosen_toppings[selected_item]        
+        selected_icecream_flavours = chosen_flavours[shopping_cart_index]
+        selected_icecream_toppings = chosen_toppings[shopping_cart_index]
     else:
         selected_icecream_name = list_combos[selected_item]
         selected_icecream_flavours = combo_flavours[selected_item]
@@ -90,12 +100,14 @@ def display_icecream_info(selected_item):
         
         total_price = total_price + get_flavour_price(each_flavour_index)
         
-    print("Toppings:")
     
-    for each_topping_index in selected_icecream_toppings:
-        print("- " + get_topping_name(each_topping_index))
+    if len(selected_icecream_toppings) > 0:  # if there are any toppings at all
+        print("Toppings:")
         
-        total_price = total_price + get_topping_price(each_topping_index)
+        for each_topping_index in selected_icecream_toppings:
+            print("- " + get_topping_name(each_topping_index))
+            
+            total_price = total_price + get_topping_price(each_topping_index)
         
     print("Unit Price: " + str(total_price) + " " + CURRENCY_NAME)
     
